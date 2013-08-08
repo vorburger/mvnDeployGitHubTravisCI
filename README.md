@@ -10,3 +10,8 @@ Credits/acknowledgments to & further background on:
 * https://github.com/settings/applications
 * http://about.travis-ci.org/docs/user/build-configuration/#Secure-environment-variables
 * https://github.com/vorburger/m2p2-repository
+
+CI
+--
+
+see https://travis-ci.org/vorburger/mvnDeployGitHubTravisCI [![Build Status](https://travis-ci.org/vorburger/mvnDeployGitHubTravisCI.png?branch=master)](https://travis-ci.org/vorburger/mvnDeployGitHubTravisCI)
