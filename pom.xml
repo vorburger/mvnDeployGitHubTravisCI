@@ -52,7 +52,7 @@
 					<branch>refs/heads/gh-pages</branch>                  <!-- remote branch name -->
 					<path>maven/snapshots</path>
 
-					<!-- This token, obtained from https://github.com/settings/applications,
+					<!-- This token, obtained from https://github.com/settings/applications, 
 						encrypted using http://about.travis-ci.org/docs/user/build-configuration/#Secure-environment-variables, 
 						is like a password; encrypt & guard it carefully! -->
 					<oauth2Token>${env.TOKEN}</oauth2Token>
@@ -71,6 +71,16 @@
 						<phase>deploy</phase>
 					</execution>
 				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
