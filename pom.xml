@@ -29,14 +29,21 @@
 				</configuration>
 			</plugin>
 
+			<!-- alternatively, you could also use the org.apache.maven.plugins:maven-scm-plugin, 
+				like e.g. https://github.com/tonnymadsen/ui-bindings/blob/master/com.rcpcompany.updatesite/pom.xml 
+				does -->
 			<plugin>
 				<groupId>com.github.github</groupId>
 				<artifactId>site-maven-plugin</artifactId>
 				<version>0.8</version>
 				<configuration>
-					<message>Maven artifacts for ${project.groupId}:${project.artifactId}:${project.version}</message>  <!-- git commit message -->
+					<!-- git commit message -->
+					<message>Maven artifacts for
+						${project.groupId}:${project.artifactId}:${project.version}
+						${maven.build.timestamp} ${LAST_COMMIT}</message>
 					<noJekyll>true</noJekyll>                                                                           <!-- disable webpage processing -->
-					<outputDirectory>${built.repo.dir}</outputDirectory>       <!-- matches altDeploymentRepository repository url above -->
+					<outputDirectory>${built.repo.dir}</outputDirectory>
+					<!-- This isn't perfect, because every old SNAPSHOT is kept.. -->
 					<merge>true</merge>
 
 					<!-- <dryRun>true</dryRun> -->
@@ -44,16 +51,19 @@
 					<repositoryName>m2p2-repository</repositoryName>      <!-- github repo name -->
 					<branch>refs/heads/gh-pages</branch>                  <!-- remote branch name -->
 					<path>maven/snapshots</path>
-					
-					<!-- This token, obtained from https://github.com/settings/applications, is like a password; encrypt & guard it carefully! -->
-					<oauth2Token>...</oauth2Token>
-					
+
+					<!-- This token, obtained from https://github.com/settings/applications,
+						encrypted using http://about.travis-ci.org/docs/user/build-configuration/#Secure-environment-variables, 
+						is like a password; encrypt & guard it carefully! -->
+					<oauth2Token>${env.TOKEN}</oauth2Token>
+
 					<includes>
 						<include>**/*</include>
 					</includes>
 				</configuration>
 				<executions>
-					<!-- run site-maven-plugin's 'site' target as part of the build's normal 'deploy' phase -->
+					<!-- run site-maven-plugin's 'site' target as part of the build's normal 
+						'deploy' phase -->
 					<execution>
 						<goals>
 							<goal>site</goal>
