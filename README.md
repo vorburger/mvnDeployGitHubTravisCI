@@ -10,6 +10,7 @@ Credits/acknowledgments to & further background on:
 * https://github.com/settings/applications
 * http://about.travis-ci.org/docs/user/build-configuration/#Secure-environment-variables
 * https://github.com/vorburger/m2p2-repository
+* http://blog2.vorburger.ch/2013/08/deploying-github-hosted-maven-incl.html
 
 CI
 --
